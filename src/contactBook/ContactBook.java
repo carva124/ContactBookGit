@@ -106,4 +106,13 @@ public class ContactBook {
         return contacts[currentContact++];
     }
 
+    public Contact getContact(int phone){
+        int index = searchIndexPhone(phone);
+        if(index == -1){
+            return null;
+        }
+        else
+            return contacts[index];
+    }
+
 }
