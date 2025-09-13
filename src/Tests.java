@@ -1,7 +1,5 @@
-import org.junit.Assert.assertEquals;
-import org.junit.Assert.fail;
-
-// import org.junit.Test; // Remove this duplicate import
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
