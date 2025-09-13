@@ -168,21 +168,30 @@ public class Main {
     }
 
     private static void checkPhones(ContactBook cBook) {
+        int n = cBook.getNumberOfContacts();
+
+        if (n <= 1) {
+            System.out.println("All contacts have different phone numbers.");
+            return;
+        }
+
+
+        Contact[] contacts = new Contact[n];
         cBook.initializeIterator();
-        while (cBook.hasNext()) {
-            Contact c1 = cBook.next();
+        for (int i = 0; i < n; i++) {
+            contacts[i] = cBook.next();
+        }
 
-            // percorre outra vez para comparar com os restantes
-            cBook.initializeIterator();
-            while (cBook.hasNext()) {
-                Contact c2 = cBook.next();
-
-                if (!c1.equals(c2) && c1.getPhone() == c2.getPhone()) {
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (contacts[i].getPhone() == contacts[j].getPhone()) {
                     System.out.println("There are contacts that share phone numbers.");
                     return;
                 }
             }
         }
-        System.out.println("All contacts have different phone numbers");
+
+        System.out.println("All contacts have different phone numbers.");
     }
+
 }
