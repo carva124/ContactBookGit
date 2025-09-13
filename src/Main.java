@@ -155,4 +155,8 @@ public class Main {
     private static void searchContact(Scanner in) {
         String name; //uyvauysvf234
     }
+
+    private static void checkPhones(){
+        
+    }
 }
