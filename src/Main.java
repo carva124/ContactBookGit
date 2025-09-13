@@ -58,6 +58,9 @@ public class Main {
                 case SEARCH_CONTACT:
                     searchContact(in, cBook);
                     break;
+                case CHECK_PHONES:
+                    checkPhones(cBook);
+                    break;
                 default:
                     System.out.println(COMMAND_ERROR);
             }
@@ -164,7 +167,22 @@ public class Main {
 
     }
 
-    private static void checkPhones(){
-        
+    private static void checkPhones(ContactBook cBook) {
+        cBook.initializeIterator();
+        while (cBook.hasNext()) {
+            Contact c1 = cBook.next();
+
+            // percorre outra vez para comparar com os restantes
+            cBook.initializeIterator();
+            while (cBook.hasNext()) {
+                Contact c2 = cBook.next();
+
+                if (!c1.equals(c2) && c1.getPhone() == c2.getPhone()) {
+                    System.out.println("There are contacts that share phone numbers.");
+                    return;
+                }
+            }
+        }
+        System.out.println("All contacts have different phone numbers");
     }
 }
